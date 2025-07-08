@@ -52,16 +52,20 @@ fun AppNavigation() {
             authViewModel = authViewModel,
             navController = navController
         ) }
-        composable("city-detail/{cityName}/{country}/{population}") { backStackEntry ->
+        composable("city-detail/{cityName}/{country}/{population}/{latitude}/{longitude}") { backStackEntry ->
             val cityName = backStackEntry.arguments?.getString("cityName") ?: ""
             val country = backStackEntry.arguments?.getString("country") ?: ""
             val population = backStackEntry.arguments?.getString("population") ?: ""
+            val latitude = backStackEntry.arguments?.getString("latitude")?.toDoubleOrNull()
+            val longitude = backStackEntry.arguments?.getString("longitude")?.toDoubleOrNull()
 
             CityDetailScreen(
                 navController = navController,
                 cityName = cityName,
                 cityCountry = country,
-                cityPopulation = population
+                cityPopulation = population,
+                cityLatitude = latitude,
+                cityLongitude = longitude
             )
         }
         composable("comments/{cityName}") { backStackEntry ->

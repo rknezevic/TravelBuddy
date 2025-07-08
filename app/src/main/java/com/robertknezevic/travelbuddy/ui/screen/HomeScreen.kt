@@ -41,7 +41,7 @@ fun CitySearchScreen(navController: NavController, cityViewModel: CityViewModel 
 
     Column(modifier = Modifier
         .padding(16.dp)
-        .padding(top= 30.dp, bottom = 30.dp)
+        .padding(top = 30.dp, bottom = 30.dp)
 
         .fillMaxSize()) {
 Row(
@@ -77,8 +77,9 @@ Row(
             items(cities) { city ->
                 CityItem(city) {
                     navController.navigate(
-                        "city-detail/${city.name}/${city.country}/${city.population}"
+                        "city-detail/${city.name}/${city.country}/${city.population}/${city.latitude}/${city.longitude}"
                     )
+
                 }
             }
         }
